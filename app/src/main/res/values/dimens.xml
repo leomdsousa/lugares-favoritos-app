@@ -3,9 +3,19 @@
     <dimen name="floatingBtnMargin">20dp</dimen>
     <dimen name="etTextSize">16sp</dimen>
     <dimen name="ivPadding">2dp</dimen>
+    <dimen name="marginDefault">16dp</dimen>
     <dimen name="paddingDefault">20dp</dimen>
+    <dimen name="paddingDefaultCardView">5dp</dimen>
     <dimen name="addScreenTextAddImageMarginTop">96dp</dimen>
     <dimen name="image_border_stroke_size">0.5dp</dimen>
     <dimen name="add_place_image_shape_radius">3dp</dimen>
     <dimen name="button_radius">10dp</dimen>
+    <dimen name="cardViewMarginStartEnd">8dp</dimen>
+    <dimen name="cardViewCorderRadius">3dp</dimen>
+    <dimen name="cardViewElevation">3dp</dimen>
+    <dimen name="cardViewImageSize">70dp</dimen>
+    <dimen name="cardViewTitleSize">18sp</dimen>
+    <dimen name="cardViewDescriptionSize">14sp</dimen>
+    <dimen name="cardViewTextMargin">5dp</dimen>
+
 </resources>
