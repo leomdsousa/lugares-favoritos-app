@@ -11,7 +11,7 @@ import com.example.lugaresfavoritos.databinding.ActivityMainBinding
 import com.example.lugaresfavoritos.models.LugarFavorito
 
 class MainActivity : AppCompatActivity() {
-    private  lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,5 +65,9 @@ class MainActivity : AppCompatActivity() {
             binding.rvMain.visibility = View.GONE
             binding.textDefaultForEmptyList.visibility = View.VISIBLE
         }
+    }
+
+    companion object {
+        var LUGAR_FAVORITO_DETAILS = "LUGAR_FAVORITO_DETAILS"
     }
 }

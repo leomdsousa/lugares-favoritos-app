@@ -1,11 +1,14 @@
 package com.example.lugaresfavoritos.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lugaresfavoritos.activities.DetailLugarFavoritoMainActivity
+import com.example.lugaresfavoritos.activities.MainActivity
 import com.example.lugaresfavoritos.databinding.ItemLugarFavoritoBinding
 import com.example.lugaresfavoritos.models.LugarFavorito
 
@@ -33,6 +36,12 @@ open class LugaresFavoritosAdapter(
         holder.tvTitle.text = model.title
         holder.tvDescription.text = model.description
         holder.ivPlaceImage.setImageURI(Uri.parse(model.image))
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailLugarFavoritoMainActivity::class.java)
+            intent.putExtra(MainActivity.LUGAR_FAVORITO_DETAILS, model)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -51,6 +60,6 @@ open class LugaresFavoritosAdapter(
     }
 
     interface OnClickListener {
-        fun oncClick(position: Int, model: LugarFavorito)
+        fun onClick(position: Int, model: LugarFavorito)
     }
 }
