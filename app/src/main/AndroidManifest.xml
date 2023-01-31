@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".activities.DetailLugarFavoritoMainActivity"
+            android:name=".activities.DetailLugarFavoritoActivity"
             android:label="HAPPY PLACE DETAIL"
             android:screenOrientation="portrait"
             android:exported="false"

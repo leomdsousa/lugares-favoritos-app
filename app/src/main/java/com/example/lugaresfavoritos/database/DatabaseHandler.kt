@@ -65,6 +65,37 @@ class DatabaseHandler(context: Context) :
         return result
     }
 
+    fun editLugarFavorito(model: LugarFavorito): Int {
+        val db = this.writableDatabase
+
+        val contentValues = ContentValues()
+        contentValues.put(COLUMN_TITLE, model.title)
+        contentValues.put(COLUMN_DESCRIPTION, model.description)
+        contentValues.put(COLUMN_IMAGE, model.image)
+        contentValues.put(COLUMN_DATE, model.date)
+        contentValues.put(COLUMN_LOCATION, model.location)
+        contentValues.put(COLUMN_LATITUDE, model.latitude)
+        contentValues.put(COLUMN_LONGITUDE, model.longitude)
+
+        val whereClause = "$COLUMN_ID = ${model.id}"
+
+        val result = db.update(TABLE_NAME, contentValues, whereClause, null)
+
+        db.close()
+        return result
+    }
+
+    fun deleteLugarFavorito(model: LugarFavorito): Int {
+        val db = this.writableDatabase
+
+        val whereClause = "$COLUMN_ID = ${model.id}"
+
+        val result = db.delete(TABLE_NAME, whereClause, null)
+
+        db.close()
+        return result
+    }
+
     fun getAllLugaresFavoritos(): ArrayList<LugarFavorito> {
         val lugaresFavoritos = ArrayList<LugarFavorito>()
         val query = "SELECT * FROM ${TABLE_NAME}"

@@ -1,6 +1,7 @@
 package com.example.lugaresfavoritos.activities
 
 import android.Manifest.permission.*
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.ActivityNotFoundException
@@ -45,6 +46,8 @@ class AddLugarFavoritoActivity : AppCompatActivity(), View.OnClickListener {
     private var savedLatitude: Double = 0.0
     private var savedLongitude: Double = 0.0
 
+    private var lugarFavoritoDetail: LugarFavorito? = null
+
     private var calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +61,27 @@ class AddLugarFavoritoActivity : AppCompatActivity(), View.OnClickListener {
         binding.toolbarAddPlace.setNavigationOnClickListener {
             onBackPressed()
         }
-        
+
+        if(intent.hasExtra(MainActivity.LUGAR_FAVORITO_DETAILS)) {
+            lugarFavoritoDetail = intent.getParcelableExtra(MainActivity.LUGAR_FAVORITO_DETAILS) as LugarFavorito?
+
+            if(lugarFavoritoDetail != null) {
+                supportActionBar?.title = "Editar"
+
+                binding.etTitle.setText(lugarFavoritoDetail!!.title)
+                binding.etDescription.setText(lugarFavoritoDetail!!.description)
+                binding.etDate.setText(lugarFavoritoDetail!!.date)
+                binding.etLocation.setText(lugarFavoritoDetail!!.location)
+                savedLatitude = lugarFavoritoDetail!!.latitude
+                savedLongitude = lugarFavoritoDetail!!.longitude
+
+                savedUriImage = Uri.parse(lugarFavoritoDetail!!.image)
+                binding.ivPlace.setImageURI(savedUriImage)
+
+                binding.btnSave.text = "Atualizar"
+            }
+        }
+
         dateSetListener = DatePickerDialog.OnDateSetListener {
                 _, year, month, dayOfMonth ->
             calendar.set(year, month, dayOfMonth)
@@ -121,7 +144,7 @@ class AddLugarFavoritoActivity : AppCompatActivity(), View.OnClickListener {
                     }
                     else -> {
                         val model = LugarFavorito(
-                            0,
+                            if(lugarFavoritoDetail != null) lugarFavoritoDetail!!.id else 0,
                             binding.etTitle.text.toString(),
                             binding.etDescription.text.toString(),
                             binding.etDate.text.toString(),
@@ -132,10 +155,21 @@ class AddLugarFavoritoActivity : AppCompatActivity(), View.OnClickListener {
                         )
 
                         val dbHandler = DatabaseHandler(this)
-                        val insertCount = dbHandler.addLugarFavorito(model)
 
-                        if(insertCount > 0) {
-                            Toast.makeText(this, "Lugar inserido com sucesso!", Toast.LENGTH_SHORT).show()
+                        if(model!!.id > 0) {
+                            val editCount = dbHandler.editLugarFavorito(model)
+
+                            if(editCount > 0)
+                                Toast.makeText(this, "Lugar alterado com sucesso!", Toast.LENGTH_SHORT).show()
+                            else
+                                setResult(Activity.RESULT_OK)
+                        } else {
+                            val insertCount = dbHandler.addLugarFavorito(model)
+
+                            if(insertCount > 0)
+                                Toast.makeText(this, "Lugar inserido com sucesso!", Toast.LENGTH_SHORT).show()
+                            else
+                                setResult(Activity.RESULT_OK)
                         }
 
                         finish()

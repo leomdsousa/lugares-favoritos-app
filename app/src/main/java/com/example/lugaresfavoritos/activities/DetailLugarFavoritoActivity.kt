@@ -8,7 +8,7 @@ import com.example.lugaresfavoritos.databinding.ActivityDetailLugarFavoritoMainB
 import com.example.lugaresfavoritos.databinding.ActivityMainBinding
 import com.example.lugaresfavoritos.models.LugarFavorito
 
-class DetailLugarFavoritoMainActivity : AppCompatActivity() {
+class DetailLugarFavoritoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailLugarFavoritoMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
