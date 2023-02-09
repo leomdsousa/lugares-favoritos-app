@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Lugares Favoritos</string>
+    <string name="google_maps_api_key">AIzaSyAhI74ij4CwgG9w_mlPR1Bdg7vc96dZcpM</string>
 </resources>

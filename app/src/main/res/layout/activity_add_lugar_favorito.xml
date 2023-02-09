@@ -117,8 +117,26 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="@dimen/etTextSize"
-                    tools:ignore="HardcodedText,SpeakableTextPresentCheck" />
+                    tools:ignore="HardcodedText,SpeakableTextPresentCheck"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvCurrentLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginDefault"
+                android:background="@drawable/shape_image_view_border"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:padding="@dimen/currentLocationPadding"
+                android:text="Obter Localização Atual"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/etTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilLocation" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivPlace"
@@ -132,7 +150,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilLocation"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation"
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
@@ -151,7 +169,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.45"
                 app:layout_constraintStart_toEndOf="@+id/ivPlace"
-                app:layout_constraintTop_toBottomOf="@+id/tilLocation"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation"
                 app:layout_constraintVertical_bias="0.019"
                 tools:ignore="HardcodedText" />
 

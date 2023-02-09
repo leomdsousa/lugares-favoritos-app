@@ -92,5 +92,6 @@ class MainActivity : AppCompatActivity() {
         var LUGAR_FAVORITO_UPDATE = 2
         var LUGAR_FAVORITO_DELETE = 3
         var LUGAR_FAVORITO_DETAILS = "LUGAR_FAVORITO_DETAILS"
+        val EXTRA_LUGAR_FAVORITO_PLACE = ""
     }
 }

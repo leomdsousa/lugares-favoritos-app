@@ -17,5 +17,6 @@
     <dimen name="cardViewTitleSize">18sp</dimen>
     <dimen name="cardViewDescriptionSize">14sp</dimen>
     <dimen name="cardViewTextMargin">5dp</dimen>
+    <dimen name="currentLocationPadding">30dp</dimen>
 
 </resources>
